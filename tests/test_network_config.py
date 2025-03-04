@@ -10,3 +10,5 @@ class Test_network_config:
         self.manager.update_response_prefix("Standard Response")
     def teardown_method(self):
         self.manager.disconnect()
+    def test_show_host_name(self):
+        assert self.manager.show_hostname() == "hostname: 1"
