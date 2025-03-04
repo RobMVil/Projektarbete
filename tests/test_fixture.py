@@ -1,20 +1,16 @@
 import pytest
 from network_config_manager import NetworkConfigManager
-import time
 
 class Test_network_config:
     @pytest.fixture(autouse=True)
     def setup_teardown(self):
         self.manager = NetworkConfigManager()
         self.manager.connect()
-        print("*****Setup*****")
         self.manager.update_hostname("1")
         self.manager.update_interface_state("down")
         self.manager.update_response_prefix("Standard Response")
         yield
         self.manager.disconnect()
-        print("*****Disconnect*****")
-        time.sleep(1)
 
     def test_show_hostname(self):
         assert self.manager.show_hostname() == "hostname: 1"
@@ -36,3 +32,9 @@ class Test_network_config:
     def test_updated_response_prefix(self):
         self.manager.update_response_prefix("Non-Standard Response")
         assert self.manager.show_response_prefix() == "response_prefix: Non-Standard Response"
+
+    def test_error(self):
+        try:
+            self.manager.update_interface_state("ERROR")
+        except ValueError as error:
+            print(error)
