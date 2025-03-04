@@ -33,7 +33,7 @@ class Test_network_config:
         self.manager.update_response_prefix("Non-Standard Response")
         assert self.manager.show_response_prefix() == "response_prefix: Non-Standard Response"
 
-    def test_error(self):
+    def test_interface_error(self):
         try:
             self.manager.update_interface_state("ERROR")
         except ValueError as error:
