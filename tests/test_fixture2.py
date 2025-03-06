@@ -1,32 +1,25 @@
 import pytest
-import time
 from network_config_manager import NetworkConfigManager
 
 @pytest.fixture()
 def setup_teardown():
     manager = NetworkConfigManager()
     manager.connect()
-    print("*******Setup*******")
     manager.update_hostname("1")
     manager.update_interface_state("down")
     manager.update_response_prefix("Standard Response")
     yield manager
     manager.disconnect()
-    print("*******Disconnected*******")
-    time.sleep(1)
 
 @pytest.fixture()
 def setup_teardown_test():
     manager = NetworkConfigManager()
     manager.connect()
-    print("*******Setup TEST*******")
     manager.update_hostname("2")
     manager.update_interface_state("up")
     manager.update_response_prefix("Non-Standard Response")
     yield manager
     manager.disconnect()
-    print("*******Disconnected TEST*******")
-    time.sleep(1)
 
 class Test_network_config:
     def test_show_hostname2(self, setup_teardown):
