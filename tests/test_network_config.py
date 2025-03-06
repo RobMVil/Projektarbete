@@ -1,4 +1,3 @@
-import pytest
 from network_config_manager import NetworkConfigManager
 
 class Test_network_config:

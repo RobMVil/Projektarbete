@@ -5,6 +5,7 @@
   "tests/test_book_dao.py::Test_Book::test_get_book_from_title",
   "tests/test_book_dao.py::Test_Book::test_get_description",
   "tests/test_fixture.py::Test_network_config::test_error",
+  "tests/test_fixture.py::Test_network_config::test_interface_error",
   "tests/test_fixture.py::Test_network_config::test_show_hostname",
   "tests/test_fixture.py::Test_network_config::test_show_interface_state",
   "tests/test_fixture.py::Test_network_config::test_show_respnse_prefix",
